@@ -4,5 +4,5 @@ language: java
 jdk: oraclejdk8
 
 script:
-  - gradle check --info
+  - gradle check --info -- stacktrace
 
