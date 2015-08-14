@@ -6,6 +6,7 @@ import static junit.framework.TestCase.assertTrue;
 import org.junit.Test;
 
 
+
 public class TravisCIVerifierTest {
 
     @Test
@@ -18,5 +19,10 @@ public class TravisCIVerifierTest {
         
         // Then
         assertTrue(result);
+    }
+
+    @Test
+    public void thisIsAFailingTest() {
+        assertTrue(false);
     }
 }
