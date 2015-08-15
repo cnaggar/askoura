@@ -3,7 +3,12 @@ language: java
 
 jdk: oraclejdk8
 
+before_install:
+  - pip install codecov
+
 script:
   - gradle check --info --stacktrace
   - gradle integration --info --stacktrace
 
+after_success:
+  - codecov
