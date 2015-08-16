@@ -1,6 +1,5 @@
 apply plugin: 'java'
-
-apply plugin: jacoco
+apply plugin: 'jacoco'
 
 repositories {
     mavenCentral()
@@ -12,8 +11,14 @@ dependencies {
 }
 
 jacoco {
-    toolVersion = "jacoco-0.7.6-20150603.214955-4"
-    reportsDir = file("$buildDir/customJacocoReportDir")
+    toolVersion = "0.7.5.201505241946"
+//    reportsDir = file("$buildDir/customJacocoReportDir")
+}
+
+jacocoTestReport {
+    reports {
+        csv.enabled false
+    }
 }
 
 // not sure what this does yet
