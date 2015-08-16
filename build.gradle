@@ -1,5 +1,7 @@
 apply plugin: 'java'
 
+apply plugin: jacoco
+
 repositories {
     mavenCentral()
 }
@@ -8,6 +10,12 @@ dependencies {
     compile group: 'commons-collections', name: 'commons-collections', version: '3.2'
     testCompile group: 'junit', name: 'junit', version: '4.+'
 }
+
+jacoco {
+    toolVersion = "jacoco-0.7.6-20150603.214955-4"
+    reportsDir = file("$buildDir/customJacocoReportDir")
+}
+
 // not sure what this does yet
 test {
     testLogging {
