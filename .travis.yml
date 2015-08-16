@@ -11,5 +11,5 @@ script:
   - gradle integration --info --stacktrace
 
 after_success:
-  - sudo codecov
+  - sudo codecov --branch master
   - sudo bash <(curl -s https://codecov.io/bash)
