@@ -8,7 +8,7 @@ before_install:
 
 script:
   - gradle check --info --stacktrace
-#  - gradle integration --info --stacktrace
+  - gradle integration --info --stacktrace
 
 after_success:
   - bash <(curl -s https://codecov.io/bash)

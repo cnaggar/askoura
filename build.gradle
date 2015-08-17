@@ -10,27 +10,27 @@ dependencies {
     testCompile group: 'junit', name: 'junit', version: '4.+'
 }
 
-//sourceSets {
-//    integration {
-//        java.srcDir file('src/integration/java')
-//        resources.srcDir file('src/integration/resources')
-//    }
-//
-//    dependencies {
-//        // ...
-//        integrationCompile sourceSets.main.output
-//        integrationCompile configurations.testCompile
-//        integrationCompile sourceSets.test.output
-//        integrationRuntime configurations.testRuntime
-//        // ...
-//    }
-//}
-//
-//task integration(type: Test) {
-//    testClassesDir = sourceSets.integration.output.classesDir
-//    classpath = sourceSets.integration.runtimeClasspath
-//}
-//
+sourceSets {
+    integration {
+        java.srcDir file('src/integration/java')
+        resources.srcDir file('src/integration/resources')
+    }
+
+    dependencies {
+        // ...
+        integrationCompile sourceSets.main.output
+        integrationCompile configurations.testCompile
+        integrationCompile sourceSets.test.output
+        integrationRuntime configurations.testRuntime
+        // ...
+    }
+}
+
+task integration(type: Test) {
+    testClassesDir = sourceSets.integration.output.classesDir
+    classpath = sourceSets.integration.runtimeClasspath
+}
+
 
 jacoco {
     toolVersion = "0.7.5.201505241946"
@@ -44,4 +44,5 @@ jacocoTestReport {
 }
 
 check.dependsOn jacocoTestReport
+integration.dependsOn jacocoTestReport
     
