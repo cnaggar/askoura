@@ -11,3 +11,9 @@ script:
 
 after_success:
   - bash <(curl -s https://codecov.io/bash)
+  
+notifications:
+  email:
+    recipients:
+      - cnaggar@gmail.com
+      - askoura@gmail.com
