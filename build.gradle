@@ -10,9 +10,30 @@ dependencies {
     testCompile group: 'junit', name: 'junit', version: '4.+'
 }
 
+//sourceSets {
+//    integration {
+//        java.srcDir file('src/integration/java')
+//        resources.srcDir file('src/integration/resources')
+//    }
+//
+//    dependencies {
+//        // ...
+//        integrationCompile sourceSets.main.output
+//        integrationCompile configurations.testCompile
+//        integrationCompile sourceSets.test.output
+//        integrationRuntime configurations.testRuntime
+//        // ...
+//    }
+//}
+//
+//task integration(type: Test) {
+//    testClassesDir = sourceSets.integration.output.classesDir
+//    classpath = sourceSets.integration.runtimeClasspath
+//}
+//
+
 jacoco {
     toolVersion = "0.7.5.201505241946"
-//    reportsDir = file("$buildDir/customJacocoReportDir")
 }
 
 jacocoTestReport {
@@ -23,44 +44,4 @@ jacocoTestReport {
 }
 
 check.dependsOn jacocoTestReport
-
-// not sure what this does yet
-test {
-    testLogging {
-        // set options for log level LIFECYCLE
-        events "failed"
-        exceptionFormat "short"
-
-        // set options for log level DEBUG
-        debug {
-            events "started", "skipped", "failed"
-            exceptionFormat "full"
-        }
-
-        // remove standard output/error logging from --info builds
-        // by assigning only 'failed' and 'skipped' events
-        info.events = ["failed", "skipped"]
-    }
-}
-
-sourceSets {
-    integration {
-        java.srcDir file('src/integration/java')
-        resources.srcDir file('src/integration/resources')
-    }
     
-    dependencies {
-        // ...
-        integrationCompile sourceSets.main.output
-        integrationCompile configurations.testCompile
-        integrationCompile sourceSets.test.output
-        integrationRuntime configurations.testRuntime
-        // ...
-    }
-
-    task integration(type: Test) {
-        testClassesDir = sourceSets.integration.output.classesDir
-        classpath = sourceSets.integration.runtimeClasspath
-    }
-    
-}
