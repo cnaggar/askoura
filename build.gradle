@@ -15,7 +15,7 @@ sourceSets {
         java.srcDir file('src/integration/java')
         resources.srcDir file('src/integration/resources')
     }
-
+    
     dependencies {
         // ...
         integrationCompile sourceSets.main.output
@@ -29,6 +29,10 @@ sourceSets {
 task integration(type: Test) {
     testClassesDir = sourceSets.integration.output.classesDir
     classpath = sourceSets.integration.runtimeClasspath
+
+    jacoco {
+        destinationFile = file("$buildDir/jacoco/integration.exec")
+    }
 }
 
 
