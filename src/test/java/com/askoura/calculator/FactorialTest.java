@@ -17,4 +17,16 @@ public class FactorialTest {
         // Then
         assertThat(result).isEqualTo(1);
     }
+
+    @Test
+    public void factorialOf2_returns2() throws Exception {
+        // Given
+        Factorial factorial = new Factorial();
+
+        // When
+        int result = factorial.calculate(2);
+
+        // Then
+        assertThat(result).isEqualTo(2);
+    }
 }
