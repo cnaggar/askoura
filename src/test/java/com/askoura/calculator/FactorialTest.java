@@ -29,4 +29,16 @@ public class FactorialTest {
         // Then
         assertThat(result).isEqualTo(2);
     }
+
+    @Test
+    public void factorialOf3_returns6() throws Exception {
+        // Given
+        Factorial factorial = new Factorial();
+
+        // When
+        int result = factorial.calculate(3);
+
+        // Then
+        assertThat(result).isEqualTo(6);
+    }
 }
