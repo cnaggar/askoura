@@ -2,16 +2,22 @@ package com.askoura.calculator;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
+import org.junit.Before;
 import org.junit.Ignore;
 import org.junit.Test;
 
 public class FactorialTest {
+    
+    private Factorial factorial = null;
+    
+    @Before
+    public void setup() {
+        factorial = new Factorial();
+    }
+    
 
     @Test
     public void factorialOf1_returns1() throws Exception {
-        // Given
-        Factorial factorial = new Factorial();
-
         // When
         int result = factorial.calculate(1);
         
@@ -21,9 +27,6 @@ public class FactorialTest {
 
     @Test
     public void factorialOf2_returns2() throws Exception {
-        // Given
-        Factorial factorial = new Factorial();
-
         // When
         int result = factorial.calculate(2);
 
@@ -33,9 +36,6 @@ public class FactorialTest {
 
     @Test
     public void factorialOf3_returns6() throws Exception {
-        // Given
-        Factorial factorial = new Factorial();
-
         // When
         int result = factorial.calculate(3);
 
@@ -45,9 +45,6 @@ public class FactorialTest {
 
     @Test
     public void factorialOf10_returns3628800() throws Exception {
-        // Given
-        Factorial factorial = new Factorial();
-
         // When
         int result = factorial.calculate(10);
 
@@ -57,9 +54,6 @@ public class FactorialTest {
 
     @Test
     public void factorialOf0_returns1() throws Exception {
-        // Given
-        Factorial factorial = new Factorial();
-
         // When
         int result = factorial.calculate(0);
 
@@ -70,9 +64,6 @@ public class FactorialTest {
     @Test
     @Ignore
     public void factorialOfminus1_returns6() throws Exception {
-        // Given
-        Factorial factorial = new Factorial();
-
         // When
         int result = factorial.calculate(3);
 
