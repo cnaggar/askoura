@@ -8,6 +8,8 @@ public class Factorial {
         if (i < 0) {
             throw new IllegalArgumentException();
         }
+
+        System.out.println("askoura");
         
         for (int a=2; a<=i; a++)
             result *= a;
