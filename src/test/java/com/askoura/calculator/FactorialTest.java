@@ -68,10 +68,19 @@ public class FactorialTest {
     }
 
     @Test
-    public void factorialOfminus1_returns6() throws Exception {
+    public void factorialOfminus1_exception() throws Exception {
         // When
         expectedException.expect(IllegalArgumentException.class);
         factorial.calculate(-1);
+
+        // Then Exception
+    }
+
+    @Test
+    public void factorialOfminus5_exception() throws Exception {
+        // When
+        expectedException.expect(IllegalArgumentException.class);
+        factorial.calculate(-5);
 
         // Then Exception
     }

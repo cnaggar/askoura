@@ -5,7 +5,7 @@ public class Factorial {
     public int calculate(int i) {
         int result = 1;
 
-        if (i == -1) {
+        if (i < 0) {
             throw new IllegalArgumentException();
         }
         
