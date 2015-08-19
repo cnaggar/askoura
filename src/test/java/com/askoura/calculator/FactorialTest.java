@@ -4,11 +4,17 @@ import static org.assertj.core.api.Assertions.assertThat;
 
 import org.junit.Before;
 import org.junit.Ignore;
+import org.junit.Rule;
 import org.junit.Test;
+import org.junit.rules.ExpectedException;
+
 
 public class FactorialTest {
     
     private Factorial factorial = null;
+    
+    @Rule
+    public ExpectedException expectedException = ExpectedException.none();
     
     @Before
     public void setup() {
@@ -62,12 +68,11 @@ public class FactorialTest {
     }
 
     @Test
-    @Ignore
     public void factorialOfminus1_returns6() throws Exception {
         // When
-        int result = factorial.calculate(3);
+        expectedException.expect(IllegalArgumentException.class);
+        factorial.calculate(-1);
 
-        // Then
-        assertThat(result).isEqualTo(6);
+        // Then Exception
     }
 }
