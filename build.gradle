@@ -48,6 +48,10 @@ jacocoTestReport {
     }
 }
 
-check.dependsOn jacocoTestReport
-integration.dependsOn jacocoTestReport
-    
+task mergecov(type: JacocoMerge) {
+    // can pass in any task set up for Jacoco
+    executionData test, integration
+    destinationFile = new File("$buildDir/jacoco/test.exec")
+}
+
+check.dependsOn(test, integration, jacocoTestReport)    

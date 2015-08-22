@@ -11,6 +11,7 @@ import org.junit.Test;
 public class TravisCIVerifierTest {
 
     @Test
+    @Ignore
     public void returnWhatYouGet_givingTrue_expectingTrue() throws Exception {
         // Given
         TravisCIVerifier travisCIVerifier = new TravisCIVerifier();
