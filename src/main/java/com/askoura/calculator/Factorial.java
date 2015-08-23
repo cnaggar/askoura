@@ -9,8 +9,6 @@ public class Factorial {
             throw new IllegalArgumentException();
         }
 
-        System.out.println("askoura");
-        
         for (int a=2; a<=i; a++)
             result *= a;
         

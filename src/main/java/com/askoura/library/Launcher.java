@@ -18,18 +18,21 @@ import com.askoura.library.config.SpringMVC;
 public class Launcher {
 
     public static void main(String[] args) throws Exception {
-        Server server = new Server(9898);
-
-        ServletContextHandler servletContextHandler = new ServletContextHandler();
-        servletContextHandler.setContextPath("/");
-
+        
+        // Instantiating Spring MVC
         AnnotationConfigWebApplicationContext context = new AnnotationConfigWebApplicationContext();
         context.setConfigLocation(SpringMVC.class.getPackage().getName());
 
+        // Wiring Spring with Jetty
         ServletHolder servletHolder = new ServletHolder(new DispatcherServlet(context));
 
+        // Servlet context creation
+        ServletContextHandler servletContextHandler = new ServletContextHandler();
+        servletContextHandler.setContextPath("/");
         servletContextHandler.addServlet(servletHolder, "/");
 
+        // Running Jetty
+        Server server = new Server(9898);
         server.setHandler(servletContextHandler);
 
         server.start();
