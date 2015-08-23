@@ -10,6 +10,10 @@ import org.eclipse.jetty.server.Server;
 import org.eclipse.jetty.servlet.DefaultServlet;
 import org.eclipse.jetty.servlet.ServletContextHandler;
 import org.eclipse.jetty.servlet.ServletHolder;
+import org.springframework.web.context.support.AnnotationConfigWebApplicationContext;
+import org.springframework.web.servlet.DispatcherServlet;
+
+import com.askoura.library.config.SpringMVC;
 
 public class Launcher {
 
@@ -19,20 +23,15 @@ public class Launcher {
         ServletContextHandler servletContextHandler = new ServletContextHandler();
         servletContextHandler.setContextPath("/");
 
-        ServletHolder servletHolder = new ServletHolder(new DefaultServlet() {
-            @Override
-            protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-                response.setStatus(HttpServletResponse.SC_OK);
-            }
-        });
+        AnnotationConfigWebApplicationContext context = new AnnotationConfigWebApplicationContext();
+        context.setConfigLocation(SpringMVC.class.getPackage().getName());
+
+        ServletHolder servletHolder = new ServletHolder(new DispatcherServlet(context));
 
         servletContextHandler.addServlet(servletHolder, "/");
 
         server.setHandler(servletContextHandler);
 
-//        ServletHolder servletHolder = new ServletHolder(new DispatcherServlet(servletContextHandler));
-
         server.start();
-//        server.join();
     }
 }

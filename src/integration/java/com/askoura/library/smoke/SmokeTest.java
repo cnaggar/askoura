@@ -18,8 +18,8 @@ public class SmokeTest {
     public void check_that_isAlive_works() throws Exception {
         RestAssured
                 .when()
-                    .get("http://localhost:9898/")
+                .get("http://localhost:9898/isalive")
                 .then()
-                    .statusCode(HttpStatus.SC_OK);
+                .statusCode(HttpStatus.SC_OK);
     }
 }
