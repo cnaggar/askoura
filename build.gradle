@@ -1,5 +1,9 @@
 apply plugin: 'java'
 apply plugin: 'jacoco'
+apply plugin: 'application'
+apply plugin: 'jetty'
+
+mainClassName = "com.askoura.library.Launcher"
 
 repositories {
     mavenCentral()
@@ -7,8 +11,13 @@ repositories {
 
 dependencies {
     compile group: 'commons-collections', name: 'commons-collections', version: '3.2'
+    compile 'org.eclipse.jetty:jetty-webapp:9.3.2.v20150730'
+//    compile 'org.springframework:spring-webmvc:4.2.0.RELEASE'
+
+    // test
     testCompile group: 'junit', name: 'junit', version: '4.+'
     testCompile 'org.assertj:assertj-core:3.1.0'
+    testCompile 'com.jayway.restassured:rest-assured:2.5.0'
 }
 
 sourceSets {
@@ -16,7 +25,7 @@ sourceSets {
         java.srcDir file('src/integration/java')
         resources.srcDir file('src/integration/resources')
     }
-    
+
     dependencies {
         // ...
         integrationCompile sourceSets.main.output
@@ -26,6 +35,7 @@ sourceSets {
         // ...
     }
 }
+
 
 task integration(type: Test) {
     testClassesDir = sourceSets.integration.output.classesDir
