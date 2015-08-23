@@ -22,9 +22,9 @@ public class TravisCIVerifierTest {
         assertTrue(result);
     }
 
-    @Test
-    @Ignore
-    public void thisIsAFailingTest() {
-        assertTrue(false);
-    }
+//    @Test
+//    @Ignore
+//    public void thisIsAFailingTest() {
+//        assertTrue(false);
+//    }
 }

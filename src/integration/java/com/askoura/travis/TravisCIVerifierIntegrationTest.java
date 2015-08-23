@@ -34,10 +34,4 @@ public class TravisCIVerifierIntegrationTest {
         // Then
         assertThat(sum).isEqualTo(3);
     }
-
-    @Test
-    @Ignore
-    public void thisIsAFailingTest() {
-        assertTrue(false);
-    }
 }
