@@ -7,7 +7,7 @@ before_install:
   - sudo pip install codecov
 
 script:
-  - gradle check mergecov --info --stacktrace
+  - gradle check --info --stacktrace
 
 after_success:
   - bash <(curl -s https://codecov.io/bash)

@@ -43,14 +43,14 @@ task integration(type: Test) {
 
     jacoco {
         append = true
-        destinationFile = file("$buildDir/jacoco/integration.exec")
+        destinationFile = file("$buildDir/jacoco/test.exec")
     }
 }
 
 test {
     jacoco {
         append = true
-        destinationFile = file("$buildDir/jacoco/unit.exec")
+        destinationFile = file("$buildDir/jacoco/test.exec")
     }
 }
 
