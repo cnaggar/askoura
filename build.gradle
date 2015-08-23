@@ -32,7 +32,15 @@ task integration(type: Test) {
     classpath = sourceSets.integration.runtimeClasspath
 
     jacoco {
+        append = true
         destinationFile = file("$buildDir/jacoco/integration.exec")
+    }
+}
+
+test {
+    jacoco {
+        append = true
+        destinationFile = file("$buildDir/jacoco/unit.exec")
     }
 }
 
