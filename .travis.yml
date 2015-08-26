@@ -8,7 +8,12 @@ before_install:
 
 script:
   - gradle check --info --stacktrace
-  - gradle integration --info --stacktrace
 
 after_success:
-  - sudo bash <(curl -s https://codecov.io/bash)
+  - bash <(curl -s https://codecov.io/bash)
+  
+notifications:
+  email:
+    recipients:
+      - cnaggar@gmail.com
+      - askoura@gmail.com
