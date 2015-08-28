@@ -30,10 +30,9 @@ public class CustomerDAOInterfaceIntegrationTest {
         customerService = new CustomerService();
 
         // When
-        System.out.println("The id is: "+customerService.persist(customer));
+        customerService.persist(customer);
         // Then
         List<Customer> customers= customerService.findAll();
-        System.out.println("Retreived Customer is: "+customers);
         assertThat(customers).contains(customer);
 
     }
