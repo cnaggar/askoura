@@ -2,6 +2,7 @@ package com.askoura.helper;
 
 import java.util.List;
 
+import com.askoura.model.Customer;
 import org.springframework.jdbc.core.JdbcTemplate;
 
 public class DBHelper {
@@ -19,5 +20,9 @@ public class DBHelper {
 
     public List<Integer> getAllOfA() {
         return jdbcTemplate.queryForList("select * from A", Integer.class);
+    }
+
+    public List<Customer> getAllCustomers() {
+        return jdbcTemplate.queryForList("select * from Customer", Customer.class);
     }
 }
