@@ -1,7 +1,5 @@
 package com.askoura.model;
 
-import com.sun.istack.internal.NotNull;
-
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
