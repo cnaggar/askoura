@@ -15,12 +15,23 @@ import java.io.Serializable;
  *
  */
 @Entity
-@Table(name="Customer")
+@Table(name="Customerrr")
 public class Customer implements Serializable {
+
+    public Customer(Customer customer){
+        this.id = customer.getId();
+        this.name = customer.getName();
+        this.country = customer.getCountry();
+
+    }
+
+    public Customer(){
+    }
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
+
 
     @Column(name="name")
     private String name;
@@ -66,8 +77,8 @@ public class Customer implements Serializable {
         if (!(obj instanceof Customer))
             return false;
         Customer other = (Customer) obj;
-        if (id != other.id)
-            return false;
+        if (id != other.id ||!name.equals(other.name)||!country.equals(other.country)){
+            return false;}
         return true;
     }
 }

@@ -2,10 +2,8 @@ package com.askoura.travis;
 
 import javax.sql.DataSource;
 
-import com.askoura.dao.CustomerDAOInterface;
-import com.askoura.dao.CustomerDAO;
-import org.hibernate.SessionFactory;
-import org.hibernate.boot.registry.StandardServiceRegistryBuilder;
+import com.askoura.helper.SessionHelperInterface;
+import com.askoura.service.CustomerService;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -13,6 +11,7 @@ import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.datasource.embedded.EmbeddedDatabaseBuilder;
 import org.springframework.jdbc.datasource.embedded.EmbeddedDatabaseType;
 import com.askoura.helper.DBHelper;
+import com.askoura.helper.TestSessionHelper;
 
 @Configuration
 public class TestConf {
@@ -20,6 +19,16 @@ public class TestConf {
     @Bean(name = "embeddedDs")
     public DataSource dataSource() {
         return new EmbeddedDatabaseBuilder().setType(EmbeddedDatabaseType.H2).addScript("askoura.sql").build();
+    }
+
+    @Bean
+    public CustomerService customerService(@Qualifier("testSessionHelper")SessionHelperInterface sessionHelper) {
+        return new CustomerService(sessionHelper);
+    }
+
+    @Bean(name = "testSessionHelper")
+    public SessionHelperInterface sessionHelper() {
+        return new TestSessionHelper();
     }
 
     @Bean(name = "testJdbc")
