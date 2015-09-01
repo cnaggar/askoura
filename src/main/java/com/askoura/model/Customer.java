@@ -8,12 +8,6 @@ import javax.persistence.Id;
 import javax.persistence.Table;
 import java.io.Serializable;
 
-/**
- * Entity bean with JPA annotations
- * Hibernate provides JPA implementation
- * @author pankaj
- *
- */
 @Entity
 @Table(name="Customerrr")
 public class Customer implements Serializable {
@@ -51,6 +45,32 @@ public class Customer implements Serializable {
         return name;
     }
 
+    @Override
+    public int hashCode() {
+        return new org.apache.commons.lang.builder.HashCodeBuilder().append(this.id).append(this.name).append(this.country).toHashCode();
+    }
+
+    @Override
+    public String toString() {
+        return "Customer{" +
+                "id=" + id +
+                ", name='" + name + '\'' +
+                ", country='" + country + '\'' +
+                '}';
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        if (obj == null) {
+            return false;
+        }
+        if (getClass() != obj.getClass()) {
+            return false;
+        }
+        final Customer other = (Customer) obj;
+        return new org.apache.commons.lang.builder.EqualsBuilder().append(this.id, other.id).append(this.name, other.name).append(this.country, other.country).isEquals();
+    }
+
     public void setName(String name) {
         this.name = name;
     }
@@ -63,22 +83,4 @@ public class Customer implements Serializable {
         this.country = country;
     }
 
-    @Override
-    public String toString(){
-        return "id="+id+", name="+name+", country="+country;
-    }
-
-    @Override
-    public boolean equals(Object obj) {
-        if (this == obj)
-            return true;
-        if (obj == null)
-            return false;
-        if (!(obj instanceof Customer))
-            return false;
-        Customer other = (Customer) obj;
-        if (id != other.id ||!name.equals(other.name)||!country.equals(other.country)){
-            return false;}
-        return true;
-    }
 }

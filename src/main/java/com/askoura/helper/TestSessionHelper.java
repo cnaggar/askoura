@@ -33,8 +33,8 @@ public class TestSessionHelper implements SessionHelperInterface {
         }
     }
 
-    public Session openCurrentSession() {
-        return getSessionFactory().openSession();
+    public Session getCurrentSession() {
+        return getSessionFactory().getCurrentSession();
     }
 
 }

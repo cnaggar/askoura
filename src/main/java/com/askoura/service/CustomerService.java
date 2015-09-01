@@ -5,14 +5,12 @@ import java.util.List;
 import com.askoura.dao.CustomerDAO;
 import com.askoura.helper.SessionHelperInterface;
 import com.askoura.model.Customer;
-import com.askoura.helper.ProductionSessionHelper;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
 
 public class CustomerService {
 
     private CustomerDAO customerDAO;
-    private Session session;
     private Transaction transaction;
     private SessionHelperInterface sessionHelper;
 
@@ -21,60 +19,52 @@ public class CustomerService {
     }
 
     public int persist(Customer entity) {
-
-        int temp = -1;
-        OpenSessionAndBeginTransaction();
-        temp = customerDAO.addCustomer(entity);
-        commitTransactionAndCloseSession();
+        getSessionAndBeginTransaction();
+        int temp = customerDAO.addCustomer(entity);
+        commitTransaction();
         return temp;
     }
 
     public void update(Customer entity) {
-        OpenSessionAndBeginTransaction();
+        getSessionAndBeginTransaction();
         customerDAO.updateCustomer(entity);
-        commitTransactionAndCloseSession();
+        commitTransaction();
     }
 
     public Customer findById(int id) {
-        OpenSessionAndBeginTransaction();
+        getSessionAndBeginTransaction();
         Customer customer = customerDAO.getCustomerById(id);
-        commitTransactionAndCloseSession();
+        commitTransaction();
         return customer;
     }
 
     public void delete(int id) {
-        OpenSessionAndBeginTransaction();
+        getSessionAndBeginTransaction();
         customerDAO.removeCustomer(id);
-        commitTransactionAndCloseSession();
+        commitTransaction();
     }
 
     public List<Customer> findAll() {
-        OpenSessionAndBeginTransaction();
+        getSessionAndBeginTransaction();
         List<Customer> customers = customerDAO.listCustomers();
-        commitTransactionAndCloseSession();
+        commitTransaction();
         return customers;
     }
 
     public void deleteAll() {
-        OpenSessionAndBeginTransaction();
+        getSessionAndBeginTransaction();
         customerDAO.deleteAll();
-        commitTransactionAndCloseSession();
+        commitTransaction();
 
     }
 
-    private void OpenSessionAndBeginTransaction(){
-        session = sessionHelper.openCurrentSession();
+    private void getSessionAndBeginTransaction(){
+        Session session = sessionHelper.getCurrentSession();
         transaction = session.beginTransaction();
         customerDAO = new CustomerDAO(session);
     }
-    private void commitTransactionAndCloseSession(){
+    private void commitTransaction(){
         transaction.commit();
-        session.close();
     }
-
-    /*private void rollBackTransaction(){
-        transaction.rollback();
-        session.close();
-    }*/
 
 }

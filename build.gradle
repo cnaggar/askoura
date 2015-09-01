@@ -19,6 +19,7 @@ dependencies {
     compile 'com.fasterxml.jackson.core:jackson-databind:2.6.1'
 
     compile 'commons-collections:commons-collections:3.2'
+    compile 'commons-lang:commons-lang:2.6'
 
     compile 'com.h2database:h2:1.4.188'
     compile 'com.zaxxer:HikariCP:2.4.1'

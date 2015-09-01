@@ -10,5 +10,5 @@ import org.hibernate.cfg.Configuration;
 public interface SessionHelperInterface {
 
     public SessionFactory getSessionFactory();
-    public Session openCurrentSession();
+    public Session getCurrentSession();
 }
