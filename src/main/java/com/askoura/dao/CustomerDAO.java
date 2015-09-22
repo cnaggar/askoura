@@ -29,16 +29,11 @@ public class CustomerDAO implements CustomerDAOInterface {
         return customer;
     }
 
-    public void removeCustomer(Customer entity) {
-        currentSession.delete(entity);
-    }
-
     public void removeCustomer(int id) {
         Customer customer = (Customer) currentSession.get(Customer.class, id);
         currentSession.delete(customer);
     }
 
-    @SuppressWarnings("unchecked")
     public List<Customer> listCustomers() {
         List<Customer> customers = (List<Customer>) currentSession.createQuery("from Customer").list();
         System.out.println(customers.toString());
@@ -48,7 +43,7 @@ public class CustomerDAO implements CustomerDAOInterface {
     public void deleteAll() {
         List<Customer> entityList = listCustomers();
         for (Customer entity : entityList) {
-            removeCustomer(entity);
+            removeCustomer(entity.getId());
         }
     }
 }
