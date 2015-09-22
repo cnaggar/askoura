@@ -9,7 +9,7 @@ import javax.persistence.Table;
 import java.io.Serializable;
 
 @Entity
-@Table(name="Customerrr")
+@Table(name="Customer")
 public class Customer implements Serializable {
 
     public Customer(Customer customer){
