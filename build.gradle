@@ -11,6 +11,7 @@ repositories {
 
 dependencies {
     compile 'org.eclipse.jetty:jetty-webapp:9.3.2.v20150730'
+    compile 'org.hibernate:hibernate-entitymanager:4.3.11.Final'
 
     compile 'org.springframework:spring-webmvc:4.2.0.RELEASE'
     compile 'org.springframework:spring-jdbc:4.2.0.RELEASE'
@@ -18,8 +19,10 @@ dependencies {
     compile 'com.fasterxml.jackson.core:jackson-databind:2.6.1'
 
     compile 'commons-collections:commons-collections:3.2'
+    compile 'commons-lang:commons-lang:2.6'
 
     compile 'com.h2database:h2:1.4.188'
+    compile 'com.zaxxer:HikariCP:2.4.1'
 
     // test
     testCompile 'junit:junit:4.+'
