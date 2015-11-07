@@ -9,7 +9,7 @@ public class CustomerTest {
 
 
     @Test
-    public void equatingCustomers_simpleScenario_identicalCustomersAreEqual() throws Exception {
+    public void equatingCustomers_identicalCustomers_AreEqual() throws Exception {
         // Given the customers is not in the DB and
         Customer customer = new Customer();
         customer.setName("Amr Askoura");
@@ -24,7 +24,7 @@ public class CustomerTest {
     }
 
     @Test
-    public void equatingCustomers_simpleScenario_CustomersWithSameReferenceAreEqual() throws Exception {
+    public void equatingCustomers_sameReference_AreEqual() throws Exception {
         // Given the customers is not in the DB and
         Customer customer = new Customer();
         customer.setName("Amr Askoura");
@@ -35,7 +35,7 @@ public class CustomerTest {
     }
 
     @Test
-    public void equatingNullCustomer_simpleScenario_returnsFalse() throws Exception {
+    public void equatingCustomers_NullReference_NotEqual() throws Exception {
         // Given the customers is not in the DB and
         Customer customer = new Customer();
         customer.setName("Amr Askoura");
@@ -47,7 +47,7 @@ public class CustomerTest {
 
 
     @Test
-    public void equatingUnEqualCustomer_simpleScenario_returnsFalse() throws Exception {
+    public void equatingCustomers_DifferentValues_NotEqual() throws Exception {
         // Given the customers is not in the DB and
         Customer customer = new Customer();
         customer.setName("Amr Askoura");
